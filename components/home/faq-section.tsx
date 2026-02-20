@@ -1,11 +1,33 @@
 "use client"
 
+import { Mail, MessageCircle, Phone } from "lucide-react"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+
+const contactCards = [
+  {
+    icon: Mail,
+    title: "Email Us",
+    description: "Send us your question and we'll respond within 24 hours.",
+    action: "support@deedsregistry.co.zw",
+  },
+  {
+    icon: MessageCircle,
+    title: "Live Chat",
+    description: "Chat with our support team during business hours.",
+    action: "Start a conversation",
+  },
+  {
+    icon: Phone,
+    title: "Call Us",
+    description: "Speak directly with a support agent for urgent queries.",
+    action: "+263 242 700 000",
+  },
+]
 
 const faqs = [
   {
@@ -63,6 +85,28 @@ export function FaqSection() {
             </AccordionItem>
           ))}
         </Accordion>
+
+        {/* Contact Cards */}
+        <div className="mt-14 text-center">
+          <p className="text-sm text-muted-foreground mb-6">
+            Still have questions? Reach out to us — we're here to help.
+          </p>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {contactCards.map((card) => (
+              <div
+                key={card.title}
+                className="rounded-2xl bg-background border border-border p-5 text-center transition-all hover:shadow-md hover:border-primary/20"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--cream-main)] mx-auto mb-3">
+                  <card.icon className="h-5 w-5 text-primary" />
+                </div>
+                <h3 className="text-sm font-semibold text-foreground">{card.title}</h3>
+                <p className="mt-1 text-xs text-muted-foreground leading-relaxed">{card.description}</p>
+                <p className="mt-3 text-xs font-medium text-primary">{card.action}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )
